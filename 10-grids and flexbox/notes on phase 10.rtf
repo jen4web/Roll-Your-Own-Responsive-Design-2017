@@ -1,0 +1,118 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww13320\viewh11540\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Many responsive design frameworks, including Bootstrap 4, UIkit 2 and 3, and Foundation 6, contain a Flexbox-based grid system. (In the case of Foundation 6, you must activate a Sass variable to turn this on, then recompile the CSS. By default, offers a float-based grid.)\
+\
+If you do not know Flexbox, there are several great resources for getting started:\
+\
+Flexbox Froggy game: {\field{\*\fldinst{HYPERLINK "http://flexboxfroggy.com/"}}{\fldrslt http://flexboxfroggy.com/}}\
+\
+Flexbox Defense game: {\field{\*\fldinst{HYPERLINK "http://www.flexboxdefense.com/"}}{\fldrslt http://www.flexboxdefense.com/}}\
+\
+CSS Tricks A Complete Guide to Flexbox: {\field{\*\fldinst{HYPERLINK "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"}}{\fldrslt https://css-tricks.com/snippets/css/a-guide-to-flexbox/}}\
+\
+Mozilla Dev Network Flexbox reference: {\field{\*\fldinst{HYPERLINK "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout"}}{\fldrslt https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout}}\
+\
+When to Use Flexbox: {\field{\*\fldinst{HYPERLINK "http://brolik.com/blog/when-to-use-flexbox/"}}{\fldrslt http://brolik.com/blog/when-to-use-flexbox/}}\
+\
+11 things I learned reading the Flexbox spec: {\field{\*\fldinst{HYPERLINK "https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b"}}{\fldrslt https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b}}\
+\
+\
+*** 
+\b Doing layouts with Flexbox is a hack.
+\b0  Ideally, we don\'92t do this. But then, layouts with floats are ALSO a hack. The best way to lay out a web page is with CSS Grid. Unfortunately, there is little browser support for this right now. We will continue hacking until it is widely supported! ***\
+\
+A great place to start to learn about Flexbox-based grid systems: {\field{\*\fldinst{HYPERLINK "http://flexboxgrid.com/"}}{\fldrslt http://flexboxgrid.com/}}\
+\
+Look in the start folder for part 10. This is a copy of all of your float-based files we\'92ve created so far. I have renamed them all so you know they are dealing with flexbox.\
+\
+Open grid-flexbox.html and styles-flexbox.html\
+\
+Our HTML remains the same. We can work with the rows and columns we already have. However, we need to change the grid formatting.\
+\
+
+\f1 /* grid system */\
+\
+/* row class is the flexbox parent. Col classes are flexbox children */\
+.row \{\
+	display: flex;\
+	flex: 0 1 auto;\
+	flex-flow: row wrap;\
+\}\
+[class*='col-'] \{\
+	margin-left: 4%;\
+\}\
+.col-1-2, .col-1-4 \{\
+	flex: 0 0 20%;\
+\}\
+.col-2 \{\
+	flex: 0 0 44%;\
+\}\
+.col-3 \{\
+	flex: 0 0 68%;\
+\}\
+.col-4 \{\
+	flex: 0 0 92%;\
+\}\
+.col-push-1 \{\
+	order: 2;\
+\}\
+.col-pull-3 \{\
+	order: 1;\
+\}\
+\
+/* Mobile Landscape Screen Sizes */\
+@media only screen and (min-width: 480px) and (max-width: 767px)  \{\
+ 	 .col-1-2,\
+	 .col-2 \{\
+		flex: 0 0 44%;\
+		margin-left: 4%;\
+	\}\
+	 .col-1-4,\
+	 .col-3,\
+	 .col-4 \{\
+		flex: 0 0 92%;\
+	\}\
+\
+\}\
+\
+@media only screen and (max-width: 479px) \{\
+\
+	.col-1-2, \
+	.col-1-4,\
+	.col-2,\
+	.col-3,\
+	.col-4 \{\
+		flex: 0 0 92%;\
+	\}\
+\}\
+\
+\
+
+\f0 Move to index-flexbox.html \'97 remove the two script tags in the footer of the document that deal with equal height. You don\'92t need them! The page should look great after that.\
+\
+Move to inside-flexbox.html \'97 here we need to adjust ordering:\
+\
+
+\f1 .col-push-1 \{\
+	order: 2;\
+\}\
+.col-pull-3 \{\
+	order: 1;\
+\}\
+/* switching columns */\
+@media(max-width: 767px)\{\
+	.col-push-1 \{\
+		order: 1;\
+	\} \
+	.col-pull-3 \{\
+		order: 2;\
+	\}\
+\}\
+
+\f0 \
+}
